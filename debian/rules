@@ -16,6 +16,7 @@ override_dh_auto_install:
 	find $(LIBDIR) -name __pycache__ -prune -exec rm -rf {} +
 	uv pip install --target $(LIBDIR)/vendor --python-version 3.13 \
 	  --only-binary :all: --no-deps -r packaging/requirements-vendor.txt
+	rm -rf $(LIBDIR)/vendor/bin
 	install -D -m 755 packaging/signa debian/signa/usr/bin/signa
 	install -D -m 644 packaging/signa.desktop debian/signa/usr/share/applications/signa.desktop
 	install -D -m 644 src/signa/resources/signa.svg debian/signa/usr/share/icons/hicolor/scalable/apps/signa.svg
