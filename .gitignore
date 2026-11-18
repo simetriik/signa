@@ -1,0 +1,34 @@
+# Environnements et artefacts
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/
+logs/
+*.egg-info/
+
+# Paquet Debian (artefacts de construction)
+debian/.debhelper/
+debian/signa/
+debian/files
+debian/*.debhelper.log
+debian/*.substvars
+debian/debhelper-build-stamp
+debian/vendor/
+*.deb
+*.msi
+*.dmg
+*.buildinfo
+*.changes
+
+# Secrets : ne jamais versionner de certificats
+*.p12
+*.pfx
+*.pem
+*.key
+tests/fixtures/*
+
+# Dossiers de travail locaux
+intrants/
+extrants/

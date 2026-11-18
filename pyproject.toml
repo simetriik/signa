@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "signa"
+version = "0.1.0"
+description = "Application de bureau pour signer des PDF avec un certificat PKCS#12 (pyHanko)"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.13"
+authors = [{ name = "Anhky", email = "arkryonia@gmail.com" }]
+keywords = ["pdf", "signature", "pyhanko", "pkcs12", "desktop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business",
+]
+
+dependencies = [
+    "pyhanko[opentype]>=0.38.1",
+    "pyhanko-certvalidator>=0.33.0",
+    "platformdirs>=4",
+    "pymupdf>=1.25",
+    "pyside6>=6.8",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Anhky/signa"
+Issues = "https://github.com/Anhky/signa/issues"
+Changelog = "https://github.com/Anhky/signa/blob/main/CHANGELOG.md"
+
+[project.scripts]
+signa = "signa.app:main"
+
+[dependency-groups]
+dev = [
+    "cryptography>=43",
+    "pytest>=8",
+    "pytest-qt>=4.4",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/signa"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
+
+# --- Installateurs Windows (.msi) et macOS (.dmg) avec Briefcase ---
+[tool.briefcase]
+project_name = "Signa"
+bundle = "io.github.anhky"
+version = "0.1.0"
+url = "https://github.com/Anhky/signa"
+author = "Anhky"
+author_email = "arkryonia@gmail.com"
+
+[tool.briefcase.app.signa]
+formal_name = "Signa"
+description = "Signer des PDF avec un certificat PKCS#12"
+long_description = "Signa ouvre un PDF, permet de tracer la zone de signature à la souris puis le signe avec pyHanko. L'original n'est jamais modifié et le mot de passe du certificat n'est jamais enregistré."
+sources = ["src/signa"]
+icon = "packaging/icons/signa"
+test_sources = []
+requires = [
+    "pyhanko[opentype]>=0.38.1",
+    "pyhanko-certvalidator>=0.33.0",
+    "platformdirs>=4",
+    "pymupdf>=1.25",
+    "PySide6-Essentials>=6.8",
+    "pyyaml>=6.0",
+]
+
+# « Ouvrir avec » : association aux fichiers PDF (Windows et macOS).
+[tool.briefcase.app.signa.document_type.pdf]
+extension = "pdf"
+description = "Document PDF"
+icon = "packaging/icons/signa"
+url = "https://github.com/Anhky/signa"
+mime_type = "application/pdf"
+
+[tool.briefcase.app.signa.macOS]
+universal_build = false
