@@ -5,7 +5,7 @@ Merci de votre intérêt ! / Thanks for your interest!
 ## Mise en place
 
 ```sh
-git clone https://github.com/hsounton/signa.git && cd signa
+git clone https://github.com/simetriik/signa.git && cd signa
 uv sync
 uv run pytest
 QT_QPA_PLATFORM=offscreen uv run signa --smoke-test   # test de démarrage sans écran

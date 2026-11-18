@@ -3,7 +3,7 @@
 ## Signaler une vulnérabilité / Reporting a vulnerability
 
 Merci de **ne pas** ouvrir d'issue publique pour une faille. Utilisez le
-[signalement privé de GitHub](https://github.com/hsounton/signa/security/advisories/new)
+[signalement privé de GitHub](https://github.com/simetriik/signa/security/advisories/new)
 (« Report a vulnerability ») ou écrivez à l'auteur : arkryonia@gmail.com.
 Please do **not** open a public issue for a vulnerability; use GitHub private reporting or email the author.
 

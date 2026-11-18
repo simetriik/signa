@@ -34,9 +34,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/hsounton/signa"
-Issues = "https://github.com/hsounton/signa/issues"
-Changelog = "https://github.com/hsounton/signa/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/simetriik/signa"
+Issues = "https://github.com/simetriik/signa/issues"
+Changelog = "https://github.com/simetriik/signa/blob/main/CHANGELOG.md"
 
 [project.scripts]
 signa = "signa.app:main"
@@ -58,9 +58,9 @@ pythonpath = ["tests"]
 # --- Installateurs Windows (.msi) et macOS (.dmg) avec Briefcase ---
 [tool.briefcase]
 project_name = "Signa"
-bundle = "io.github.hsounton"
+bundle = "io.github.simetriik"
 version = "0.1.0"
-url = "https://github.com/hsounton/signa"
+url = "https://github.com/simetriik/signa"
 author = "Anhky"
 author_email = "arkryonia@gmail.com"
 
@@ -85,7 +85,7 @@ requires = [
 extension = "pdf"
 description = "Document PDF"
 icon = "packaging/icons/signa"
-url = "https://github.com/hsounton/signa"
+url = "https://github.com/simetriik/signa"
 mime_type = "application/pdf"
 
 [tool.briefcase.app.signa.macOS]

@@ -27,7 +27,7 @@ Signa ne fournit ni horodatage par tiers de confiance, ni validation à long ter
 ### Installation
 
 Les installateurs sont **non signés** (pas de certificat de signature de code) : Windows et macOS afficheront un
-avertissement la première fois. Téléchargez-les depuis la page [Releases](https://github.com/hsounton/signa/releases).
+avertissement la première fois. Téléchargez-les depuis la page [Releases](https://github.com/simetriik/signa/releases).
 
 #### Linux — Debian 13 (trixie)
 
@@ -57,7 +57,7 @@ Autres distributions : voir « Depuis les sources » ci-dessous.
 Nécessite [uv](https://docs.astral.sh/uv/) et Python 3.13.
 
 ```sh
-git clone https://github.com/hsounton/signa.git && cd signa
+git clone https://github.com/simetriik/signa.git && cd signa
 uv sync
 uv run signa [document.pdf]
 ./scripts/install-user-launcher.sh   # Linux, optionnel : lanceur GNOME pour votre utilisateur
@@ -129,12 +129,12 @@ service provider). Signa provides neither third-party timestamping nor long-term
 ### Installation
 
 The installers are **unsigned** (no code-signing certificate), so Windows and macOS show a warning on first run.
-Download them from the [Releases](https://github.com/hsounton/signa/releases) page.
+Download them from the [Releases](https://github.com/simetriik/signa/releases) page.
 
 - **Linux (Debian 13)**: `sudo apt install ./signa_0.1.0-1_amd64.deb` — remove with `sudo apt remove signa`. Other distributions: run from source.
 - **Windows 10/11**: run `Signa-0.1.0.msi`. When **SmartScreen** shows "Windows protected your PC", click **More info**, then **Run anyway**.
 - **macOS (Apple silicon)**: open `Signa-0.1.0.dmg` and drag Signa to Applications. **Gatekeeper** blocks the first launch: go to **System Settings → Privacy & Security**, find the message about Signa and click **Open Anyway** (macOS 15+). On macOS 14 and earlier: right-click the app → **Open** → **Open**. Terminal alternative: `xattr -dr com.apple.quarantine /Applications/Signa.app`.
-- **From source** (all systems, needs [uv](https://docs.astral.sh/uv/) and Python 3.13): `git clone https://github.com/hsounton/signa.git && cd signa && uv sync && uv run signa [file.pdf]`.
+- **From source** (all systems, needs [uv](https://docs.astral.sh/uv/) and Python 3.13): `git clone https://github.com/simetriik/signa.git && cd signa && uv sync && uv run signa [file.pdf]`.
 
 ### Usage
 
