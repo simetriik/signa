@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: signa
 Upstream-Contact: Anhky <arkryonia@gmail.com>
-Source: https://github.com/Anhky/signa
+Source: https://github.com/hsounton/signa
 
 Files: *
 Copyright: 2026 Anhky
