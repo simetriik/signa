@@ -8,7 +8,7 @@ Signa est une application de bureau pour **signer des PDF** avec un certificat P
 |---|---|
 | Debian 13 / Linux | `signa_0.1.0-1_amd64.deb` |
 | Windows 10/11 | `Signa-0.1.0.msi` |
-| macOS (Apple silicon) | `Signa-0.1.0.dmg` |
+| macOS 14+ (Apple silicon) | `Signa-0.1.0.dmg` |
 
 ## ⚠️ À lire avant d'installer
 

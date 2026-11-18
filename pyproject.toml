@@ -90,3 +90,4 @@ mime_type = "application/pdf"
 
 [tool.briefcase.app.signa.macOS]
 universal_build = false
+min_os_version = "14.0"  # exigé par les wheels PySide6 macOS

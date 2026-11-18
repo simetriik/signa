@@ -46,7 +46,7 @@ Autres distributions : voir « Depuis les sources » ci-dessous.
 2. **SmartScreen** affiche « Windows a protégé votre ordinateur » : cliquez sur **Informations complémentaires**, puis sur **Exécuter quand même**.
 3. Suivez l'assistant. Signa apparaît dans le menu Démarrer et dans « Ouvrir avec » pour les PDF.
 
-#### macOS (Apple silicon) — `Signa-0.1.0.dmg`
+#### macOS 14 ou plus (Apple silicon) — `Signa-0.1.0.dmg`
 
 1. Ouvrez le `.dmg` et glissez **Signa** dans **Applications**.
 2. Au premier lancement, **Gatekeeper** refuse d'ouvrir l'application (développeur non identifié). Ouvrez **Réglages Système → Confidentialité et sécurité**, descendez jusqu'au message sur Signa et cliquez sur **Ouvrir quand même** (macOS 15 et plus). Sur macOS 14 et moins : clic droit sur l'application → **Ouvrir** → **Ouvrir**.
@@ -133,7 +133,7 @@ Download them from the [Releases](https://github.com/simetriik/signa/releases) p
 
 - **Linux (Debian 13)**: `sudo apt install ./signa_0.1.0-1_amd64.deb` — remove with `sudo apt remove signa`. Other distributions: run from source.
 - **Windows 10/11**: run `Signa-0.1.0.msi`. When **SmartScreen** shows "Windows protected your PC", click **More info**, then **Run anyway**.
-- **macOS (Apple silicon)**: open `Signa-0.1.0.dmg` and drag Signa to Applications. **Gatekeeper** blocks the first launch: go to **System Settings → Privacy & Security**, find the message about Signa and click **Open Anyway** (macOS 15+). On macOS 14 and earlier: right-click the app → **Open** → **Open**. Terminal alternative: `xattr -dr com.apple.quarantine /Applications/Signa.app`.
+- **macOS 14+ (Apple silicon)**: open `Signa-0.1.0.dmg` and drag Signa to Applications. **Gatekeeper** blocks the first launch: go to **System Settings → Privacy & Security**, find the message about Signa and click **Open Anyway** (macOS 15+). On macOS 14 and earlier: right-click the app → **Open** → **Open**. Terminal alternative: `xattr -dr com.apple.quarantine /Applications/Signa.app`.
 - **From source** (all systems, needs [uv](https://docs.astral.sh/uv/) and Python 3.13): `git clone https://github.com/simetriik/signa.git && cd signa && uv sync && uv run signa [file.pdf]`.
 
 ### Usage
