@@ -1,0 +1,24 @@
+Source: signa
+Section: utils
+Priority: optional
+Maintainer: Anhky <arkryonia@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Homepage: https://github.com/Anhky/signa
+Rules-Requires-Root: no
+
+Package: signa
+Architecture: amd64
+Depends: ${misc:Depends}, libc6,
+ python3 (>= 3.13), python3 (<< 3.14),
+ python3-pyside6.qtwidgets,
+ python3-platformdirs,
+ python3-pymupdf,
+ python3-yaml
+Description: signature de documents PDF avec pyHanko
+ Signa est une application de bureau qui permet d'ouvrir un PDF, de tracer à
+ la souris la zone de signature, puis de le signer avec un certificat PKCS#12
+ grâce à pyHanko. Les styles de tampon se configurent dans un fichier YAML.
+ .
+ Le document original n'est jamais modifié et le mot de passe du certificat
+ n'est jamais enregistré.

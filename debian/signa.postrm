@@ -1,0 +1,13 @@
+#!/bin/sh
+# Supprime les caches Python (__pycache__) créés à l'exécution dans /usr/lib/signa.
+set -e
+
+case "$1" in
+    remove|purge)
+        rm -rf /usr/lib/signa
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

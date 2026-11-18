@@ -1,0 +1,23 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: signa
+Upstream-Contact: Anhky <arkryonia@gmail.com>
+Source: https://github.com/Anhky/signa
+
+Files: *
+Copyright: 2026 Anhky
+License: GPL-3+
+
+Files: usr/lib/signa/vendor/*
+Copyright: Auteurs respectifs (voir les métadonnées *.dist-info de chaque paquet)
+License: other
+ Bibliothèques Python tierces embarquées (pyHanko : MIT, cryptography :
+ Apache-2.0 ou BSD, aiohttp : Apache-2.0, lxml : BSD, etc.). Les textes de
+ licence figurent dans les répertoires *.dist-info de ce dossier.
+
+License: GPL-3+
+ Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le
+ modifier selon les termes de la Licence Publique Générale GNU, version 3 ou
+ (à votre convenance) toute version ultérieure.
+ .
+ Sur les systèmes Debian, le texte complet de la licence se trouve dans
+ /usr/share/common-licenses/GPL-3.

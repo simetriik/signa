@@ -1,0 +1,22 @@
+.TH SIGNA 1 "novembre 2026" "signa 0.1.0" "Commandes utilisateur"
+.SH NOM
+signa \- signer des documents PDF avec un certificat PKCS#12
+.SH SYNOPSIS
+.B signa
+[\fIFICHIER.pdf\fR]
+.br
+.B signa \-\-version
+.SH DESCRIPTION
+Signa est une application graphique pour tracer la zone de signature d'un PDF
+et le signer avec pyHanko. Le fichier signé est enregistré à côté de l'original
+sous le nom « <nom>\-signe.pdf » ; l'original n'est jamais modifié.
+Le mot de passe du certificat est demandé à chaque signature et n'est jamais stocké.
+.SH FICHIERS
+.TP
+.I ~/.config/signa/settings.json
+Dernier certificat, style et zone utilisés.
+.TP
+.I ~/.config/signa/pyhanko.yml
+Styles de tampon (format pyHanko), créé au premier lancement à partir d'un exemple embarqué.
+.SH LICENCE
+GPL\-3.0\-or\-later.

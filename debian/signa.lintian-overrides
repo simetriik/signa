@@ -1,0 +1,4 @@
+# Bibliothèques Python volontairement embarquées : absentes de Debian ou trop anciennes.
+signa: embedded-library *
+signa: unusual-interpreter *
+signa: executable-not-elf-or-script *

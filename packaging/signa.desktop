@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Signa
+GenericName=Signature de PDF
+Comment=Signer des documents PDF avec un certificat
+Comment[en]=Sign PDF documents with a certificate
+Exec=signa %f
+Icon=signa
+Terminal=false
+Categories=Office;
+MimeType=application/pdf;
+StartupWMClass=signa
+Keywords=PDF;signature;certificat;pyHanko;
