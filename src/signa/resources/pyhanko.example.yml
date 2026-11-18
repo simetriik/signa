@@ -1,0 +1,21 @@
+# Styles de tampon pour Signa (format pyHanko : https://docs.pyhanko.eu/).
+# Copiez ce fichier, adaptez les textes, puis choisissez-le dans Signa.
+# Pour une police personnalisée, ajoutez sous « text-box-style » :
+#   font: "/chemin/vers/police.ttf"
+stamp-styles:
+  institutional:
+    type: text
+    stamp-text: "Prénom NOM\nFonction, Organisation\nSigné électroniquement le %(ts)s"
+    timestamp-format: "%d/%m/%Y à %H:%M"
+    border-width: 0
+    background-opacity: 0
+    inner-content-layout:
+      x-align: left
+      y-align: top
+      margins: [0, 0, 6, 0]
+    text-box-style:
+      font-size: 9
+  simple:
+    type: text
+    stamp-text: "Signé par %(signer)s\nle %(ts)s"
+    timestamp-format: "%d/%m/%Y %H:%M"
