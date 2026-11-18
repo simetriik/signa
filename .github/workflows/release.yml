@@ -1,0 +1,115 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - name: Bibliothèques système pour Qt (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libxkbcommon0 libdbus-1-3 libfontconfig1
+      - run: uv sync --locked
+      - run: uv run pytest -q
+
+  deb:
+    name: Paquet .deb
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: sudo apt-get update && sudo apt-get install -y debhelper lintian
+      - run: dpkg-buildpackage -us -uc -b
+      - name: Rassembler le paquet
+        run: |
+          mkdir -p dist
+          mv ../signa_*_amd64.deb dist/
+          lintian dist/*.deb || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-linux
+          path: dist/*.deb
+          if-no-files-found: error
+
+  windows:
+    name: Installateur Windows (.msi)
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv tool install briefcase
+      - run: briefcase create windows --no-input
+      - run: briefcase build windows --no-input
+      - run: briefcase package windows --adhoc-sign --no-input
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-windows
+          path: dist/*.msi
+          if-no-files-found: error
+
+  macos:
+    name: Installateur macOS (.dmg)
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv tool install briefcase
+      - run: briefcase create macOS --no-input
+      - run: briefcase build macOS --no-input
+      - run: briefcase package macOS --adhoc-sign --packaging-format dmg --no-input
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-macos
+          path: dist/*.dmg
+          if-no-files-found: error
+
+  release:
+    name: Publication de la release
+    needs: [deb, windows, macos]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: installer-*
+          merge-multiple: true
+      - name: Créer la release et joindre les installateurs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          ls -l dist
+          gh release create "$TAG" dist/* \
+            --title "Signa $version" \
+            --notes-file "release-notes-${version}.md"
